@@ -58,7 +58,7 @@ class sistemaV:
             if historia == m.verHistoria():
                 return True
         #solo luego de haber recorrido todo el ciclo se retorna False
-        return False
+        return False 
         
     def verNumeroMascotas(self):
         return len(self.__lista_mascotas) 
@@ -174,7 +174,7 @@ def main():
             print("Usted ingresó una opción no válida, intentelo nuevamente...")
 
 if __name__=='__main__':
-    main()
+    main() 
 
 
 
