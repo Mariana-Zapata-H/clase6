@@ -55,7 +55,9 @@ class Mascota:
     
 class sistemaV:
     def __init__(self):
+        self.__mascotas = {"canino": [], "felino": []}
         self.__lista_mascotas = []
+         
     
     def verificarExiste(self,historia):
         for m in self.__lista_mascotas:
@@ -68,7 +70,24 @@ class sistemaV:
         return len(self.__lista_mascotas) 
     
     def ingresarMascota(self,mascota):
-        self.__lista_mascotas.append(mascota) 
+        historia = mascota.verHistoria()
+
+        # Para validar que la historia no exista
+        for m in self.__lista_mascotas:
+            if m.verHistoria() == historia:
+                print("Ya existe una mascota con esa historia clínica.")
+                return False
+
+        tipo = mascota.verTipo().lower()
+
+        # Se valida el tipo
+        if tipo not in ["canino", "felino"]:
+            print("Tipo inválido. Solo se permiten 'canino' o 'felino'.")
+            return False
+
+        self.__lista_mascotas.append(mascota)
+        self.__mascotas[tipo].append(mascota)  # Se organiza por tipo
+        return True 
    
 
     def verFechaIngreso(self,historia):
