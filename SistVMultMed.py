@@ -138,7 +138,8 @@ def main():
                        \n3- Ver número de mascotas en el servicio 
                        \n4- Ver medicamentos que se están administrando
                        \n5- Eliminar mascota 
-                       \n6- Salir 
+                       \n6- Eliminar medicamento
+                       \n7- Salir 
                        \nUsted ingresó la opción: ''' ))
         if menu==1: # Ingresar una mascota 
             if servicio_hospitalario.verNumeroMascotas() >= 10:
@@ -205,8 +206,18 @@ def main():
                 print("Mascota eliminada del sistema con exito")
             else:
                 print("No se ha podido eliminar la mascota")
+
+        elif menu == 6:  # Eliminar medicamento
+            historia = int(input("Ingrese la historia clínica de la mascota: "))
+            paciente = servicio_hospitalario.obtenerMascota(historia)
         
-        elif menu==6:
+            if paciente:
+                nombre_medicamento = input("Ingrese el nombre del medicamento a eliminar: ")
+                paciente.eliminarMedicamento(nombre_medicamento)
+            else:
+                print("No se encontró la mascota.")      
+            
+        elif menu==7:
             print("Usted ha salido del sistema de servicio de hospitalización...")
             break
         
