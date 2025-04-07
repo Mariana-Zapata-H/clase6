@@ -46,8 +46,12 @@ class Mascota:
         self.__peso=p
     def asignarFecha(self,f):
         self.__fecha_ingreso=f
-    def asignarLista_Medicamentos(self,n):
-        self.__lista_medicamentos = n 
+    def asignarLista_Medicamentos(self,med):
+        for m in self.__lista_medicamentos:
+            if m.getNombre().lower() == med.getNombre().lower():
+                print("Ya existe un medicamento con ese nombre.")
+                return
+        self.__lista_medicamentos.append(med)
     
 class sistemaV:
     def __init__(self):
