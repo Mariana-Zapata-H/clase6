@@ -61,7 +61,15 @@ class Mascota:
                 print("Ya existe un medicamento con ese nombre.")
                 return
         self.__lista_medicamentos.append(med)
-    
+
+    def eliminarMedicamento(self, nombre_med):
+        for m in self.__medicamentos:
+            if m.getNombre().lower() == nombre_med.lower():
+                self.__medicamentos.remove(m)
+                print("El medicamento fue eliminado.")
+                return
+        print("El medicamento no fue encontrado.")
+
 class sistemaV:
     def __init__(self):
         self.__mascotas = {"canino": [], "felino": []}
