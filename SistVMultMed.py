@@ -1,3 +1,4 @@
+from datetime import datetime 
 class Medicamento:
     def __init__(self):
         self.__nombre = "" 
@@ -44,8 +45,16 @@ class Mascota:
         self.__tipo=t
     def asignarPeso(self,p):
         self.__peso=p
-    def asignarFecha(self,f):
-        self.__fecha_ingreso=f
+    def asignarFecha(self):
+        while True:
+            fecha = input("Ingrese la fecha (dd/mm/aaaa): ")
+            try:
+                fecha_valida = datetime.strptime(fecha, "%d/%m/%Y")
+                self.__fecha_ingreso = fecha_valida
+                break  # Para salimos del bucle
+            except ValueError:
+                print("Formato incorrecto. Debe intentar nuevamente.")
+                
     def asignarLista_Medicamentos(self,med):
         for m in self.__lista_medicamentos:
             if m.getNombre().lower() == med.getNombre().lower():
